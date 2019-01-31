@@ -79,9 +79,15 @@ Print the value of the attribute.
 Print the element that has the attribute.
 */
 function getCustomAttribute() {
-
+	let spans = document.querySelectorAll('span');
+	for (let span of spans) {
+	  if (span.dataset['customattr']) {
+		console.log(span.dataset['customattr'])
+	  }		
+	}
 }
 
+getCustomAttribute();
 /*
 6. Sum Event
 NOTE: Write unobtrusive Javascript
