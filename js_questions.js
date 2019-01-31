@@ -15,9 +15,9 @@ Print that element's contents.
 function getUSA() {
   var spans = document.getElementsByTagName("span");
   for (let span of spans) {
-	  if (span.dataset['customattr'] === 'USA') {
-		console.log(span.innerHTML);
-	  }
+	if (span.dataset['customattr'] === 'USA') {
+	  console.log(span.innerHTML);
+	}
   }
 }
 
@@ -29,9 +29,15 @@ Define function getPeopleInSales()
 Print the names of all the people in the sales department.
 */
 function getPeopleInSales() {
-
+  var rows = document.getElementsByTagName('tr');
+  for(let row of rows) {
+	if ( row.cells[1].innerHTML === 'Sales') {
+	  console.log(row.cells[0].innerHTML);
+	}	
+  }
 }
 
+getPeopleInSales();
 /*
 3. Click Here
 Define function getAnchorChildren()
