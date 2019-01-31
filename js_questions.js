@@ -29,7 +29,7 @@ Define function getPeopleInSales()
 Print the names of all the people in the sales department.
 */
 function getPeopleInSales() {
-  var rows = document.getElementsByTagName('tr');
+  let rows = document.getElementsByTagName('tr');
   for(let row of rows) {
 	if ( row.cells[1].innerHTML === 'Sales') {
 	  console.log(row.cells[0].innerHTML);
@@ -45,19 +45,32 @@ Find all anchor elements with a <span> child.
 Print the contents of <span>
 */
 function getAnchorChildren() {
-
+  let anchors = document.getElementsByTagName('a');
+  for (let anchor of anchors) {
+	let anchorSpan = anchor.querySelector('span');
+	if (anchorSpan) {
+      console.log(anchorSpan.innerHTML);
+	}	
+  }
 }
 
+getAnchorChildren();
 /*
 4. Hobbies
 Define function getHobbies()
-Find all checked options in the 'skills' select element.
+Find all checked options in the 'hobbies' select element.
 Print the value and the contents.
 */
 function getHobbies() {
-
+  let hobbySelect = document.querySelector('[name=hobbies]');
+    for (let option of hobbySelect.options) {
+	  if (option.getAttribute('selected') === 'selected') {
+		console.log(`Value: ${option.value} Content: ${option.innerHTML} `);
+	  }
+	}
 }
-  
+
+getHobbies();
 /*
 5. Custom Attribute
 Define function getCustomAttribute()
