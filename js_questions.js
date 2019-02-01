@@ -94,12 +94,50 @@ Regarding these elements:
 	<input id="num1" class="nums" type="text"/>
 	<input id="num2" class="nums" type="text"/>
 	<h3>Sum: <span id="sum"></span></h3>
-
 Define onchange event handler.
 Add <input> element values.
 Put the sum in the <span> element.
 If values cannot be added, put "Cannot add" in the <span> element
 */
+let num1 = document.querySelector(['#num1']);
+let num2 = document.querySelector(['#num2']);
+
+num1.dataset.numvalue = '';
+num2.dataset.numvalue = '';
+
+num1.addEventListener('change', () => {
+	if( notBothNumbers() ) {
+		sumSpan.textContent = 'Cannot add';
+	} else {
+	  sumSpan.textContent = (+num1.value) + (+num2.value);
+	}
+});
+
+num2b.addEventListener('change', () => {
+	if( notBothNumbers() ) {
+		sumSpan.textContent = 'Cannot add';
+	} else {
+	  sumSpan.textContent = (+num1.value) + (+num2.value);
+	}
+});
+
+let body = document.querySelector('body');
+let sumh3 = document.createElement('h3');
+sumh3.textContent = 'Sum: ';
+
+let sumSpan = document.createElement('span');
+sumSpan.textContent = 'Cannot add';
+sumSpan.id = 'sum';
+
+
+body.appendChild(sumh3);
+sumh3.appendChild(sumSpan);
+
+console.log(num1);
+
+function notBothNumbers() {
+  return (isNaN(num1.value) || isNaN(num2.value));
+};
 
 /*
 7. Skills Event
