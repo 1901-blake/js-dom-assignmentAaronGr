@@ -102,9 +102,6 @@ If values cannot be added, put "Cannot add" in the <span> element
 let num1 = document.querySelector(['#num1']);
 let num2 = document.querySelector(['#num2']);
 
-num1.dataset.numvalue = '';
-num2.dataset.numvalue = '';
-
 num1.addEventListener('change', () => {
 	if( notBothNumbers() ) {
 		sumSpan.textContent = 'Cannot add';
@@ -113,7 +110,7 @@ num1.addEventListener('change', () => {
 	}
 });
 
-num2b.addEventListener('change', () => {
+num2.addEventListener('change', () => {
 	if( notBothNumbers() ) {
 		sumSpan.textContent = 'Cannot add';
 	} else {
@@ -133,8 +130,6 @@ sumSpan.id = 'sum';
 body.appendChild(sumh3);
 sumh3.appendChild(sumSpan);
 
-console.log(num1);
-
 function notBothNumbers() {
   return (isNaN(num1.value) || isNaN(num2.value));
 };
@@ -145,7 +140,14 @@ NOTE: Write unobtrusive Javascript
 When user selects a skill, create an alert with a message similar to:
 	"Are you sure CSS is one of your skills?"
 NOTE: no alert should appear when user deselects a skill.
+*/
 
+let skillSelect = document.querySelector('[name=skills]');
+skillSelect.addEventListener('change', event => {
+	alert(`Are you sure ${event.target.value} is one of your skills?`);
+}, false);
+
+/*
 8. Favorite Color Event
 NOTE: Write unobtrusive Javascript
 NOTE: This is regarding the favoriteColor radio buttons.
@@ -153,7 +155,9 @@ When a user selects a color, create an alert with a message similar to:
 	"So you like green more than blue now?"
 In this example, green is the new value and blue is the old value.
 Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
+*/
 
+/*
 9. Show/Hide Event
 NOTE: Write unobtrusive Javascript
 When user hovers over an employees name:
