@@ -199,6 +199,12 @@ Regarding this element:
 Show the current time in this element in this format: 9:05:23 AM
 The time should be accurate to the second without having to reload the page.
 */
+let currentTimeEle = document.getElementById('currentTime');
+
+setInterval(() => {
+	let today = new Date();
+	currentTimeEle.innerText = today.toLocaleTimeString();
+}, 1000);
 
 /*
 11. Delay
