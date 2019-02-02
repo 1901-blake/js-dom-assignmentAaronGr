@@ -198,12 +198,26 @@ Regarding this element:
 	<h5 id="currentTime"></h5>
 Show the current time in this element in this format: 9:05:23 AM
 The time should be accurate to the second without having to reload the page.
+*/
 
+/*
 11. Delay
 Regarding this element:
 	<p id="helloWorld">Hello, World!</p>
 Three seconds after a user clicks on this element, change the text to a random color.
+*/
+let helloWorldP = document.getElementById('helloWorld');
+helloWorldP.addEventListener('click', event => {
+  setTimeout(changeToRandomColor(helloWorldP), 3000);
+});
 
+function changeToRandomColor (ele) {
+	return function() {
+		ele.style.color = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+	}
+}
+
+/*
 12. Walk the DOM
 Define function walkTheDOM(node, func)
 This function should traverse every node in the DOM. Use recursion.
