@@ -126,7 +126,6 @@ let sumSpan = document.createElement('span');
 sumSpan.textContent = 'Cannot add';
 sumSpan.id = 'sum';
 
-
 body.appendChild(sumh3);
 sumh3.appendChild(sumSpan);
 
@@ -156,6 +155,23 @@ When a user selects a color, create an alert with a message similar to:
 In this example, green is the new value and blue is the old value.
 Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
 */
+let favoriteColorRadios = document.querySelectorAll('[name=favoriteColor]');
+let colorSelect = document.querySelector('[name=colors]');
+let previousColor = colorSelect.value;
+let favoriteColor = previousColor;
+
+colorSelect.addEventListener('change', event => {
+	favoriteColor = event.target.value;
+	alert(`So you like ${favoriteColor} more than ${previousColor} now?`);
+	previousColor = event.target.value;
+	changeFavoriteColorsBG();
+});
+
+function changeFavoriteColorsBG () {
+	for (let radio of favoriteColorRadios) {
+	  radio.setAttribute('appearance', 'none');
+	}
+};
 
 /*
 9. Show/Hide Event
@@ -163,7 +179,20 @@ NOTE: Write unobtrusive Javascript
 When user hovers over an employees name:
 	Hide the name if shown.
 	Show the name if hidden.
+*/
+let employees = document.getElementsByClassName('empName');
+for (let employee of employees) {
+	employee.style.opacity = '1';
+	employee.addEventListener('mouseover', event => {
+	  if (employee.style.opacity === '0') {
+			employee.style.opacity = '1';
+		} else {
+			employee.style.opacity = '0';
+		}
+	});
+}
 
+/*
 10. Current Time
 Regarding this element:
 	<h5 id="currentTime"></h5>
