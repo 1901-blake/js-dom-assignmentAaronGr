@@ -168,9 +168,7 @@ colorSelect.addEventListener('change', event => {
 });
 
 function changeFavoriteColorsBG () {
-	for (let radio of favoriteColorRadios) {
-	  radio.setAttribute('appearance', 'none');
-	}
+  document.body.style.backgroundColor = favoriteColor;
 };
 
 /*
@@ -228,6 +226,29 @@ function changeToRandomColor (ele) {
 Define function walkTheDOM(node, func)
 This function should traverse every node in the DOM. Use recursion.
 On each node, call func(node).
-
-
 */
+let domToWalk = document.documentElement;
+walkTheDOM(domToWalk, func);
+
+function walkTheDOM(node, func) {
+	if( node ) {
+  	if (!node.hasChildNodes()) {
+			if (node.nextSibling) {
+		  	walkTheDOM(node.nextSibling,func);
+			}
+			return func(node);
+		}
+
+	if (node.nextSibling) {
+		walkTheDOM(node.nextSibling, func);
+	}
+
+		walkTheDOM(node.firstChild,func);		
+  }
+}
+
+function func(node) { 
+	return function () {
+	  console.log(`${node} has been visited!`);
+	}
+}
